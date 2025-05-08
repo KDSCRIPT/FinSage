@@ -2,6 +2,7 @@
 
 Welcome to **FinSage**, your intelligent financial assistant – a one-stop solution for beginners and employees who are eager to invest wisely without getting lost in complicated jargon or shady brokers.
 
+⚠️ Due to free tier of vercel,Sign up page will take around 20 to 30 seconds
 ---
 
 ## 🌟 Tagline
