@@ -3,10 +3,12 @@ import * as d3 from "d3";
 
 const MFPriceChart = ({ isin }) => {
   const ref = useRef();
-  const [range, setRange] = useState("1Y");
+  const [range, setRange] = useState("5Y");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/mf/graph?range=${range}&isin=${isin}`)
+    fetch(
+      `https://finsage.onrender.com/api/mf/graph?range=${range}&isin=${isin}`
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.historical?.length || data?.predictions?.length) {

@@ -22,12 +22,12 @@ import get_mf_nav
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": ["http://127.0.0.1:3000", "https://fin-sage-delta.vercel.app"]}})
 bcrypt = Bcrypt(app)
 app.config["JWT_SECRET_KEY"] = "Innovate48"
 jwt = JWTManager(app)
 # Set JWT expiration to 30 minutes
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=30)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=180)
 
 # Use a local SQLite database
 LOCAL_DB_PATH = "sqlite:///innovate.db"
@@ -284,4 +284,4 @@ def get_news_by_category(category):
     return jsonify({"error": "News not found"}), 404
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)

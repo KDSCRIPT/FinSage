@@ -47,11 +47,14 @@ const RDPage = () => {
     console.log("Sending payload:", payload);
 
     try {
-      const response = await fetch("http://localhost:5000/api/rd-analysis", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://finsage.onrender.com/api/rd-analysis",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

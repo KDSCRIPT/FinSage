@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import { useAuth } from "../Components/Authentication/AuthContext";
 
+axios.defaults.baseURL = "https://finsage.onrender.com";
+
 const HomePage = () => {
   const COLORS = ["#4BCD3E", "#FFB400", "#36A2EB", "#f54242"];
 
@@ -33,14 +35,11 @@ const HomePage = () => {
           return;
         }
 
-        const response = await axios.get(
-          "http://localhost:5000/api/user/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get("/api/user/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         setUserName(response.data.name);
       } catch (error) {
@@ -66,7 +65,7 @@ const HomePage = () => {
     event.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:5000/api/investment-recommendation",
+        "https://finsage.onrender.com/api/investment-recommendation",
         {
           method: "POST",
           headers: {

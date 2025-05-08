@@ -5,7 +5,7 @@ import json
 def fetch_financial_news():
     def fetch_news(keyword, title):
         url = f"https://news.google.com/rss/search?q={keyword}&hl=en-IN&gl=IN&ceid=IN:en"
-        response = requests.get(url)
+        response = requests.get(url, verify=False)
         root = ET.fromstring(response.content)
 
         items = root.findall('./channel/item')
